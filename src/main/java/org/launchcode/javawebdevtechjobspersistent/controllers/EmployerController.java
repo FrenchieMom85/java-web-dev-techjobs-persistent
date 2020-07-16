@@ -20,7 +20,7 @@ public class EmployerController {
 
     @GetMapping()
     public String displayAllEmployers(Model model) {
-        model.addAttribute("title", "All Employer");
+        model.addAttribute("title", "All Employers");
         model.addAttribute("employers", employerRepository.findAll());
         return "employers/index";
     }
@@ -37,9 +37,10 @@ public class EmployerController {
                                     Errors errors, Model model) {
 
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Employer");
+            model.addAttribute("errors", errors);
             return "employers/add";
         }
+
         employerRepository.save(newEmployer);
         return "redirect:";
     }

@@ -37,6 +37,7 @@ public class SkillController {
                                          Errors errors, Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("errors", errors);
             return "skills/add";
         }
         skillRepository.save(newSkill);
